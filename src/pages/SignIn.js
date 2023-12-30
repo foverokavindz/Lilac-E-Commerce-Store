@@ -6,6 +6,7 @@ import {
   signInSuccess,
 } from '../store/reducers/user/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import OAuth from '../components/OAuth';
 
 const SignIn = () => {
   const [formData, setFormData] = useState({});
@@ -80,7 +81,7 @@ const SignIn = () => {
             </span>
           </p>
         </div>
-        <button>Login with Google</button>
+        <OAuth />
       </div>
       {error ? <p>Something went Wrong!</p> : ''}
     </div>

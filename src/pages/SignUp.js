@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import OAuth from '../components/OAuth';
 
 const SignUp = () => {
   const [formData, setFormData] = useState({});
@@ -101,7 +102,7 @@ const SignUp = () => {
             </span>
           </p>
         </div>
-        <button>Login with Google</button>
+        <OAuth />
       </div>
       {error ? <p>Something went Wrong!</p> : ''}
     </div>
