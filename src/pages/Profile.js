@@ -9,11 +9,11 @@ import {
 import { app } from '../firebase';
 
 const Profile = () => {
-  const { currentUser } = useSelector((state) => state.user);
+  const fileRef = useRef(null);
   const [image, setImage] = useState(undefined);
+  const { currentUser } = useSelector((state) => state.user);
   const [uploadPrecentage, setUploadPrecentage] = useState(0);
   const [formData, setFormData] = useState({});
-  const fileRef = useRef(null);
   const [imageError, setImageError] = useState(false);
 
   /*
@@ -27,14 +27,13 @@ const Profile = () => {
       request.resource.contentType.matches('image/.*')
     } */
   const handleChnage = () => {};
-  useEffect(
-    (image) => {
-      if (image) handleFileUpload(image);
-    },
-    [image]
-  );
+
+  useEffect(() => {
+    if (image) handleFileUpload(image);
+  }, [image]);
 
   const handleFileUpload = async (image) => {
+    console.log('imageData', image);
     const storage = getStorage(app);
     const fileName = new Date().getTime() + image.name;
     const storageRef = ref(storage, fileName);
@@ -45,6 +44,8 @@ const Profile = () => {
         const progress =
           (snapShot.bytesTransferred / snapShot.totalBytes) * 100;
         setUploadPrecentage(Math.round(progress));
+
+        console.log('progrss - ', progress);
       },
 
       (error) => {
@@ -59,7 +60,7 @@ const Profile = () => {
     );
   };
 
-  console.log(formData);
+  console.log('formData   ', formData);
   return (
     <div>
       <form>
@@ -85,7 +86,10 @@ const Profile = () => {
           ref={fileRef}
           hidden
           accept="image/*"
-          onChange={(e) => setImage(e.target.files[0])}
+          onChange={(e) => {
+            setImage(e.target.files[0]);
+            console.log('image', e.target);
+          }}
         />
         <p> {currentUser.email}</p>
 
