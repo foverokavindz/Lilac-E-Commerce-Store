@@ -57,6 +57,11 @@ const Profile = () => {
 
         <button>Update</button>
       </form>
+
+      <div>
+        <p>Sign out</p>
+        <p>Delete Account</p>
+      </div>
     </div>
   );
 };
