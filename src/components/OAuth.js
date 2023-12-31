@@ -23,9 +23,17 @@ const OAuth = () => {
           email: result.user.email,
           photo: result.user.photoURL,
         }),
-      });
+      }); // you need add this line
 
       const data = await res.json();
+      const token = res.headers.get('x-auth-token');
+
+      console.log('token  ', token);
+      console.log('data', data);
+
+      if (token) {
+        localStorage.setItem('lilac-auth-token', token);
+      }
       dispatch(signInSuccess(data));
       navigate('/');
     } catch (error) {

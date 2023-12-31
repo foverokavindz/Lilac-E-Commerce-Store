@@ -34,13 +34,23 @@ const SignIn = () => {
           password: formData.password,
         }),
       });
+
+      console.log('res', res);
       const data = await res.json();
+
+      const token = res.headers.get('x-auth-token');
+      console.log('token  ', token);
+      console.log('data', data);
+
+      if (token) {
+        localStorage.setItem('lilac-auth-token', token);
+      }
 
       if (data.error) dispatch(signInFailure());
       //setError(true);
 
-      console.log('data  ', data);
       dispatch(signInSuccess(data));
+
       navigate('/');
     } catch (error) {
       console.log('error', error);

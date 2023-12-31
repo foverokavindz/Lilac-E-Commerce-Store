@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   getStorage,
   ref,
@@ -7,6 +7,12 @@ import {
   getDownloadURL,
 } from 'firebase/storage';
 import { app } from '../firebase';
+import {
+  userUpdateStart,
+  userUpdateSuccess,
+  userUpdateFailure,
+} from '../store/reducers/user/userSlice';
+import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
   const fileRef = useRef(null);
@@ -15,6 +21,8 @@ const Profile = () => {
   const [uploadPrecentage, setUploadPrecentage] = useState(0);
   const [formData, setFormData] = useState({});
   const [imageError, setImageError] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   /*
   
@@ -26,14 +34,51 @@ const Profile = () => {
       request.resource.size < 2 *1024*1024 && 
       request.resource.contentType.matches('image/.*')
     } */
-  const handleChnage = () => {};
+  const handleChnage = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+    //console.log('formData  ', formData);
+  };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    //console.log('Data  ', JSON.stringify(formData));
+    const token = localStorage.getItem('lilac-auth-token');
+    //console.log('token', token);
+    try {
+      dispatch(userUpdateStart());
+      const res = await fetch(
+        `http://localhost:3005/api/user/update/${currentUser._id}`,
+        {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-auth-token': token,
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      const data = await res.json();
+
+      // if (data.success === false) {
+      //   dispatch(userUpdateFailure(data));
+      //   return;
+      // }
+
+      dispatch(userUpdateSuccess(data));
+      //console.log('data  ', data);
+      navigate('/');
+    } catch (error) {
+      console.log('error', error);
+      dispatch(userUpdateFailure(error));
+    }
+  };
   useEffect(() => {
     if (image) handleFileUpload(image);
   }, [image]);
 
   const handleFileUpload = async (image) => {
-    console.log('imageData', image);
+    // console.log('imageData', image);
     const storage = getStorage(app);
     const fileName = new Date().getTime() + image.name;
     const storageRef = ref(storage, fileName);
@@ -45,7 +90,7 @@ const Profile = () => {
           (snapShot.bytesTransferred / snapShot.totalBytes) * 100;
         setUploadPrecentage(Math.round(progress));
 
-        console.log('progrss - ', progress);
+        //console.log('progrss - ', progress);
       },
 
       (error) => {
@@ -60,10 +105,10 @@ const Profile = () => {
     );
   };
 
-  console.log('formData   ', formData);
+  //console.log('formData   ', formData);
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <img
           src={formData.profilePicture || currentUser.profilePicture}
           alt="profile picture"
@@ -88,7 +133,6 @@ const Profile = () => {
           accept="image/*"
           onChange={(e) => {
             setImage(e.target.files[0]);
-            console.log('image', e.target);
           }}
         />
         <p> {currentUser.email}</p>
