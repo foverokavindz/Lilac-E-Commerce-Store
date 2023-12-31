@@ -11,6 +11,9 @@ import {
   userUpdateStart,
   userUpdateSuccess,
   userUpdateFailure,
+  userDeleteStart,
+  userDeleteSuccess,
+  userDeleteFailure,
 } from '../store/reducers/user/userSlice';
 import { useNavigate } from 'react-router-dom';
 
@@ -80,7 +83,7 @@ const Profile = () => {
   const handleFileUpload = async (image) => {
     // console.log('imageData', image);
     const storage = getStorage(app);
-    const fileName = new Date().getTime() + image.name;
+    const fileName = currentUser._id;
     const storageRef = ref(storage, fileName);
     const uploadTask = uploadBytesResumable(storageRef, image);
     uploadTask.on(
@@ -105,6 +108,37 @@ const Profile = () => {
     );
   };
 
+  const handleDeleteAccount = async () => {
+    const token = localStorage.getItem('lilac-auth-token');
+    //console.log('token', token);
+    try {
+      dispatch(userDeleteStart());
+      const res = await fetch(
+        `http://localhost:3005/api/user/delete/${currentUser._id}`,
+        {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-auth-token': token,
+          },
+        }
+      );
+
+      const data = await res.json();
+
+      // if (data.success === false) {
+      //   dispatch(userDeleteFailure(data));
+      //   return;
+      // }
+
+      dispatch(userDeleteSuccess());
+      console.log('data  ', data);
+      navigate('/sign-in');
+    } catch (error) {
+      console.log('error', error);
+      dispatch(userDeleteFailure(error));
+    }
+  };
   //console.log('formData   ', formData);
   return (
     <div>
@@ -182,8 +216,9 @@ const Profile = () => {
       </form>
 
       <div>
-        <p>Sign out</p>
-        <p>Delete Account</p>
+        <br />
+        <button>Sign out</button>
+        <button onClick={handleDeleteAccount}>Delete Account</button>
       </div>
     </div>
   );
