@@ -14,6 +14,7 @@ import {
   userDeleteStart,
   userDeleteSuccess,
   userDeleteFailure,
+  userSignOut,
 } from '../store/reducers/user/userSlice';
 import { useNavigate } from 'react-router-dom';
 
@@ -124,7 +125,7 @@ const Profile = () => {
         }
       );
 
-      const data = await res.json();
+      //const data = await res.json();
 
       // if (data.success === false) {
       //   dispatch(userDeleteFailure(data));
@@ -132,12 +133,21 @@ const Profile = () => {
       // }
 
       dispatch(userDeleteSuccess());
-      console.log('data  ', data);
+      localStorage.removeItem('lilac-auth-token');
+      localStorage.clear();
+
       navigate('/sign-in');
     } catch (error) {
       console.log('error', error);
       dispatch(userDeleteFailure(error));
     }
+  };
+
+  const handleSignOut = () => {
+    localStorage.removeItem('lilac-auth-token');
+    localStorage.clear();
+    dispatch(userSignOut());
+    navigate('/sign-in');
   };
   //console.log('formData   ', formData);
   return (
@@ -217,7 +227,7 @@ const Profile = () => {
 
       <div>
         <br />
-        <button>Sign out</button>
+        <button onClick={handleSignOut}>Sign out</button>
         <button onClick={handleDeleteAccount}>Delete Account</button>
       </div>
     </div>
