@@ -5,6 +5,7 @@ import TwoColumnSection from '../../components/TwoColumnSection';
 import ProductCard from '../../components/ProductCard';
 import Promotion from '../../sections/adverticements/Promotion';
 import Discounts from '../../sections/adverticements/Discounts';
+import Footer from '../../components/Footer';
 
 const Home = () => {
   return (
@@ -104,9 +105,10 @@ const Home = () => {
 
         {/* reviews */}
 
-        <div className="container mx-auto px-4 py-10 max-w-7xl h-auto flex flex-col justify-center items-center">
-          <Discounts />
-        </div>
+        {/* footer */}
+      </div>
+      <div className="container mx-auto ">
+        <Footer />
       </div>
     </>
   );
