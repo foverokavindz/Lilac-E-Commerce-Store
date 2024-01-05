@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-
+import logo from './assets/Lilac-logo-transparent.png';
 import { Fragment } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import {
@@ -29,7 +29,7 @@ const Navbar = () => {
   const { currentUser } = useSelector((state) => state.user);
   return (
     <>
-      <Disclosure as="nav" className="bg-stone-200">
+      <Disclosure as="nav" className="bg-stone-100">
         {({ open }) => (
           <>
             <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -47,13 +47,10 @@ const Navbar = () => {
                   </Disclosure.Button>
                 </div>
 
+                {/* site logo */}
                 <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                   <div className="flex flex-shrink-0 items-center">
-                    <img
-                      className="h-8 w-auto"
-                      src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                      alt="Lilac stores"
-                    />
+                    <img className="h-8 w-auto" src={logo} alt="Lilac stores" />
                   </div>
                   <div className="hidden sm:ml-6 sm:block">
                     <div className="flex space-x-4">
@@ -65,7 +62,7 @@ const Navbar = () => {
                             page.current
                               ? ' text-neutral-700'
                               : 'text-neutral-500 hover:text-neutral-800 ',
-                            'rounded-md px-3 py-2 text-sm font-medium'
+                            'rounded-md px-3 py-4 text-sm font-medium'
                           )}
                           aria-current={page.current ? 'page' : undefined}
                         >
