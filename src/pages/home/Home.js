@@ -14,13 +14,13 @@ const Home = () => {
         {/* carowsal */}
         <ImageSlider />
         {/* shop by category */}
-        <div className="container mx-auto px-4 max-w-7xl h-screen flex flex-col justify-center items-center">
+        <div className="container mx-auto px-4 max-w-7xl  flex flex-col justify-center items-center">
           <div className="">
             <div className="m-10 flex flex-row justify-center items-center">
               <h2 className="text-4xl font-semibold"> Shop By Category </h2>
             </div>
 
-            <div className="flex flex-row justify-center items-center gap-8">
+            <div className="flex flex-row justify-center items-center gap-8 flex-wrap">
               <ImageCard />
 
               <ImageCard />
