@@ -5,7 +5,6 @@ import TwoColumnSection from '../../components/TwoColumnSection';
 import ProductCard from '../../components/ProductCard';
 import Promotion from '../../sections/adverticements/Promotion';
 import Discounts from '../../sections/adverticements/Discounts';
-import Footer from '../../components/Footer';
 
 const Home = () => {
   return (
@@ -14,9 +13,9 @@ const Home = () => {
         {/* carowsal */}
         <ImageSlider />
         {/* shop by category */}
-        <div className="container mx-auto px-4 max-w-7xl  flex flex-col justify-center items-center">
+        <div className="container mx-auto px-4 max-w-7xl py-16 flex flex-col justify-center items-center">
           <div className="">
-            <div className="m-10 flex flex-row justify-center items-center">
+            <div className="my-5 flex flex-row justify-center items-center">
               <h2 className="text-4xl font-semibold"> Shop By Category </h2>
             </div>
 
@@ -106,9 +105,6 @@ const Home = () => {
         {/* reviews */}
 
         {/* footer */}
-      </div>
-      <div className="container mx-auto ">
-        <Footer />
       </div>
     </>
   );

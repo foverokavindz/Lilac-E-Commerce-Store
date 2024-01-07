@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import logo from './assets/Lilac-logo-transparent.png';
+import logo from './assets/Lilac-mini-logo-transparent.png';
 import { Fragment } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import {
@@ -8,11 +8,6 @@ import {
   XMarkIcon,
   ShoppingCartIcon,
 } from '@heroicons/react/24/outline';
-
-const headerStyle = {
-  backgroundColor: '#DADADA',
-  marginBottom: '20px',
-};
 
 const navigation = [
   { name: 'Home', href: '/', current: true },
@@ -33,7 +28,7 @@ const Navbar = () => {
         {({ open }) => (
           <>
             <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-              <div className="relative flex h-16 items-center justify-between">
+              <div className="relative flex h-20 items-center justify-between">
                 <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                   {/* Mobile menu button*/}
                   <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-300 hover:text-gray-900">
@@ -48,30 +43,33 @@ const Navbar = () => {
                 </div>
 
                 {/* site logo */}
-                <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                <div className="flex flex-1  items-center justify-center sm:items-stretch sm:justify-start">
+                  {/* logo */}
                   <div className="flex flex-shrink-0 items-center">
                     <img className="h-8 w-auto" src={logo} alt="Lilac stores" />
                   </div>
-                  <div className="hidden sm:ml-6 sm:block">
-                    <div className="flex space-x-4">
-                      {navigation.map((page) => (
-                        <Link
-                          key={page.name}
-                          to={page.href}
-                          className={classNames(
-                            page.current
-                              ? ' text-neutral-700'
-                              : 'text-neutral-500 hover:text-neutral-800 ',
-                            'rounded-md px-3 py-4 text-sm font-medium'
-                          )}
-                          aria-current={page.current ? 'page' : undefined}
-                        >
-                          {page.name}
-                        </Link>
-                      ))}
-                    </div>
+                </div>
+                {/**menu */}
+                <div className="hidden sm:ml-6 sm:block ">
+                  <div className="flex justify-center items-center space-x-4 ">
+                    {navigation.map((page) => (
+                      <Link
+                        key={page.name}
+                        to={page.href}
+                        className={classNames(
+                          page.current
+                            ? ' text-neutral-700'
+                            : 'text-neutral-500 hover:text-neutral-800 ',
+                          ' px-3 py-4 text-base font-medium'
+                        )}
+                        aria-current={page.current ? 'page' : undefined}
+                      >
+                        {page.name}
+                      </Link>
+                    ))}
                   </div>
                 </div>
+
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                   {currentUser ? (
                     <button

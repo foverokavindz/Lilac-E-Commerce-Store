@@ -5,10 +5,10 @@ import {
   signInFailure,
   signInStart,
   signInSuccess,
-} from '../store/reducers/user/userSlice';
+} from '../../store/reducers/user/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import OAuth from '../components/OAuth';
-import logo from '../components/assets/Lilac-logo-transparent.png';
+import OAuth from '../../components/OAuth';
+import logo from '../../components/assets/Lilac-logo-transparent.png';
 
 const SignIn = () => {
   const [formData, setFormData] = useState({});
