@@ -11,12 +11,14 @@ import Product from './pages/product/Product';
 import Footer from './components/Footer';
 import ProductDetails from './pages/productDetails/ProductDetails';
 import Contact from './pages/contact/Contact';
+import Cart from './components/Cart';
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Navbar />
+        <Cart />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />

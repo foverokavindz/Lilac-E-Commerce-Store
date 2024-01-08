@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import logo from './assets/Lilac-mini-logo-transparent.png';
 import { Fragment } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
@@ -8,6 +8,9 @@ import {
   XMarkIcon,
   ShoppingCartIcon,
 } from '@heroicons/react/24/outline';
+import { userSignOut } from '../store/reducers/user/userSlice';
+import { toggleCartVisible } from '../store/reducers/ui/uiSlice';
+import { useNavigate } from 'react-router-dom';
 
 const navigation = [
   { name: 'Home', href: '/', current: true },
@@ -21,7 +24,22 @@ function classNames(...classes) {
 }
 
 const Navbar = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { currentUser } = useSelector((state) => state.user);
+  const { cartItemCount } = useSelector((state) => state.userInterface);
+
+  const handleSignOut = () => {
+    localStorage.removeItem('lilac-auth-token');
+    localStorage.clear();
+    dispatch(userSignOut());
+    navigate('/sign-in');
+  };
+
+  console.log('cartItemCount', cartItemCount);
+
+  console.log('currentUser', currentUser);
+
   return (
     <>
       <Disclosure as="nav" className="bg-stone-100">
@@ -75,14 +93,15 @@ const Navbar = () => {
                     <button
                       type="button"
                       className="relative rounded-full hover:bg-gray-300 p-1.5  text-gray-700 hover:text-gray-800 focus:outline-none focus:bg-gray-700 focus:text-white "
+                      onClick={() => dispatch(toggleCartVisible())}
                     >
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">View Cart</span>
 
                       {/* cart batch */}
-                      <div class="t-0 absolute left-5 bottom-5">
-                        <p class="flex h-2 w-2 items-center justify-center rounded-full bg-red-500 p-2.5 text-xs text-white">
-                          3
+                      <div className="t-0 absolute left-5 bottom-5">
+                        <p className="flex h-2 w-2 items-center justify-center rounded-full bg-red-500 p-2.5 text-xs text-white">
+                          {cartItemCount}
                         </p>
                       </div>
                       <ShoppingCartIcon
@@ -128,33 +147,33 @@ const Navbar = () => {
                       <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                         <Menu.Item>
                           {({ active }) => (
-                            <a
-                              href="#"
+                            <Link
+                              to={'/profile'}
                               className={classNames(
                                 active ? 'bg-gray-100' : '',
                                 'block px-4 py-2 text-sm text-gray-700'
                               )}
                             >
                               Your Profile
-                            </a>
+                            </Link>
                           )}
                         </Menu.Item>
                         <Menu.Item>
                           {({ active }) => (
-                            <a
-                              href="#"
+                            <Link
+                              to={'/'}
                               className={classNames(
                                 active ? 'bg-gray-100' : '',
                                 'block px-4 py-2 text-sm text-gray-700'
                               )}
                             >
                               Settings
-                            </a>
+                            </Link>
                           )}
                         </Menu.Item>
-                        <Menu.Item>
+                        <Menu.Item onClick={handleSignOut}>
                           {({ active }) => (
-                            <a
+                            <Link
                               href="#"
                               className={classNames(
                                 active ? 'bg-gray-100' : '',
@@ -162,7 +181,7 @@ const Navbar = () => {
                               )}
                             >
                               Sign out
-                            </a>
+                            </Link>
                           )}
                         </Menu.Item>
                       </Menu.Items>

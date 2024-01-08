@@ -1,9 +1,13 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import userReducer from './reducers/user/userSlice';
 import { persistReducer, persistStore } from 'redux-persist';
+import userReducer from './reducers/user/userSlice';
+import uiReducer from './reducers/ui/uiSlice';
 import storage from 'redux-persist/lib/storage';
 
-const rootReducer = combineReducers({ user: userReducer });
+const rootReducer = combineReducers({
+  user: userReducer,
+  userInterface: uiReducer,
+});
 const persistConfig = {
   key: 'root',
   version: 1,

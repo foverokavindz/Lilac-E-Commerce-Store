@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -47,20 +48,17 @@ const Profile = () => {
     e.preventDefault();
     //console.log('Data  ', JSON.stringify(formData));
     const token = localStorage.getItem('lilac-auth-token');
-    //console.log('token', token);
+    console.log('token', token);
     try {
       dispatch(userUpdateStart());
-      const res = await fetch(
-        `http://localhost:3005/api/user/update/${currentUser._id}`,
-        {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-            'x-auth-token': token,
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      const res = await fetch(`http://localhost:3005/api/user/update`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': token,
+        },
+        body: JSON.stringify(formData),
+      });
 
       const data = await res.json();
 
@@ -108,6 +106,8 @@ const Profile = () => {
       }
     );
   };
+
+  console.log('formData  ', formData);
 
   const handleDeleteAccount = async () => {
     const token = localStorage.getItem('lilac-auth-token');
