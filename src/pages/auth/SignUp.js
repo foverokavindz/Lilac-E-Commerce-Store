@@ -8,10 +8,12 @@ const SignUp = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   const navigate = useNavigate();
+
   const handleChnage = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
     console.log('formData  ', formData);
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('Data  ', JSON.stringify(formData));
@@ -23,7 +25,6 @@ const SignUp = () => {
         body: JSON.stringify(formData),
       });
       const data = await res.json();
-
       if (data.error) setError(true);
 
       setIsLoading(false);
@@ -99,7 +100,7 @@ const SignUp = () => {
                       id="phone"
                       className={styles.inputbox}
                       placeholder="123-45-678"
-                      pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+                      onChange={handleChnage}
                       required
                     />
                   </div>
@@ -112,6 +113,7 @@ const SignUp = () => {
                       id="city"
                       className={styles.inputbox}
                       placeholder="Colombo"
+                      onChange={handleChnage}
                       required
                     />
                   </div>
@@ -120,13 +122,13 @@ const SignUp = () => {
                 {/* next sextion */}
                 <div class="mb-6">
                   <label for="email" className={styles.lable}>
-                    Email address
+                    Address
                   </label>
                   <input
-                    type="email"
-                    id="email"
+                    type="text"
+                    id="address"
                     className={styles.inputbox}
-                    placeholder="john.doe@company.com"
+                    placeholder="No.10, SamanRD , Colombo"
                     onChange={handleChnage}
                     required
                   />
@@ -134,13 +136,13 @@ const SignUp = () => {
 
                 <div class="mb-6">
                   <label for="email" className={styles.lable}>
-                    Address
+                    Email
                   </label>
                   <input
                     type="email"
                     id="email"
                     className={styles.inputbox}
-                    placeholder="No.10, SamanRD , Colombo"
+                    placeholder="john.doe@company.com"
                     onChange={handleChnage}
                     required
                   />
@@ -168,12 +170,18 @@ const SignUp = () => {
                     id="confirm_password"
                     className={styles.inputbox}
                     placeholder="•••••••••"
-                    onChange={handleChnage}
-                    required
                   />
                 </div>
 
                 {/* terms and conditions */}
+
+                {/*
+                
+                
+                
+                
+                
+                
                 <div class="flex items-start mb-6">
                   <div class="flex items-center h-5">
                     <input
@@ -181,7 +189,6 @@ const SignUp = () => {
                       type="checkbox"
                       value=""
                       className={styles.checkbox}
-                      onChange={handleChnage}
                       required
                     />
                   </div>
@@ -193,6 +200,7 @@ const SignUp = () => {
                     .
                   </label>
                 </div>
+                */}
 
                 {/* submit button */}
                 <button

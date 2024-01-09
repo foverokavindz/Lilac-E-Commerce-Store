@@ -2,11 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   cartIsVisible: false,
-  cartItemCount: 2,
+  cartItemCount: 9,
 };
 
 const uiSlice = createSlice({
-  name: 'userInterface',
+  name: 'ui',
   initialState,
   reducers: {
     toggleCartVisible: (state, action) => {

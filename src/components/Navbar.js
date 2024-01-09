@@ -27,7 +27,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { currentUser } = useSelector((state) => state.user);
-  const { cartItemCount } = useSelector((state) => state.userInterface);
+  const { cartItemCount } = useSelector((state) => state.ui);
 
   const handleSignOut = () => {
     localStorage.removeItem('lilac-auth-token');
@@ -37,8 +37,6 @@ const Navbar = () => {
   };
 
   console.log('cartItemCount', cartItemCount);
-
-  console.log('currentUser', currentUser);
 
   return (
     <>

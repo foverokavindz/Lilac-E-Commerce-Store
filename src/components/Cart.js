@@ -34,7 +34,7 @@ const products = [
 
 export default function Example() {
   const dispatch = useDispatch();
-  const { cartIsVisible: open } = useSelector((state) => state.userInterface);
+  const { cartIsVisible: open } = useSelector((state) => state.ui);
 
   return (
     <Transition.Root show={open} as={Fragment}>

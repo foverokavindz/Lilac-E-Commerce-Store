@@ -67,4 +67,5 @@ export const {
   userDeleteFailure,
   userSignOut,
 } = userSilce.actions;
+
 export default userSilce.reducer;

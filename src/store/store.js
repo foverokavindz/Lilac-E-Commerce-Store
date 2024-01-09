@@ -6,7 +6,7 @@ import storage from 'redux-persist/lib/storage';
 
 const rootReducer = combineReducers({
   user: userReducer,
-  userInterface: uiReducer,
+  ui: uiReducer,
 });
 const persistConfig = {
   key: 'root',
