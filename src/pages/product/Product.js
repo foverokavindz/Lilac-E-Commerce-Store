@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/no-redundant-roles */
-import { Fragment, useState } from 'react';
+import { Fragment, useState, useEffect } from 'react';
 import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import {
@@ -9,6 +9,7 @@ import {
   PlusIcon,
   Squares2X2Icon,
 } from '@heroicons/react/20/solid';
+import ProductCard from '../../components/ProductCard';
 
 const sortOptions = [
   { name: 'Most Popular', href: '#', current: true },
@@ -153,6 +154,22 @@ function classNames(...classes) {
 
 export default function Product() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+
+  const [allProducts, setAllProducts] = useState([]);
+
+  useEffect(() => {
+    const getAllProducts = async () => {
+      try {
+        const response = await fetch('http://localhost:3005/api/product');
+        const data = await response.json();
+        setAllProducts(data);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    };
+
+    getAllProducts();
+  }, []);
 
   return (
     <div className="bg-white">
@@ -434,28 +451,30 @@ export default function Product() {
               <div className="lg:col-span-3">
                 {/* Your content */}
 
-                <div>
-                  <h2 className="sr-only">Products</h2>
-
-                  <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-                    {products.map((product) => (
-                      <a key={product.id} href={product.href} className="group">
-                        <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
-                          <img
-                            src={product.imageSrc}
-                            alt={product.imageAlt}
-                            className="h-full w-full object-cover object-center group-hover:opacity-75"
-                          />
-                        </div>
-                        <h3 className="mt-4 text-sm text-gray-700">
-                          {product.name}
-                        </h3>
-                        <p className="mt-1 text-lg font-medium text-gray-900">
-                          {product.price}
-                        </p>
-                      </a>
-                    ))}
-                  </div>
+                <div className="flex flex-row flex-wrap justify-center items-center gap-8">
+                  {allProducts.map(
+                    ({
+                      _id,
+                      name,
+                      image,
+                      brand,
+                      numReviews,
+                      price,
+                      review,
+                    }) => {
+                      return (
+                        <ProductCard
+                          key={_id}
+                          brand={brand}
+                          image={image}
+                          name={name}
+                          review={review.map((item) => item.rating)}
+                          numReviews={numReviews}
+                          price={price}
+                        />
+                      );
+                    }
+                  )}
                 </div>
               </div>
             </div>
