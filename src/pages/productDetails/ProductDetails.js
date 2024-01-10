@@ -1,18 +1,26 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import Rating from '../../components/Rating';
+import { useSelector } from 'react-redux';
 
-const ProductDetails = ({
-  _id,
-  name,
-  image,
-  brand,
-  review,
-  numReviews,
-  description,
-  images,
-  price,
-}) => {
+const ProductDetails = () => {
+  const { activeProduct } = useSelector((state) => state.product);
+  const {
+    _id,
+    name,
+    image,
+    brand,
+    numReviews,
+    price,
+    review,
+    category,
+    description,
+    images,
+    isFeatured,
+    stock,
+  } = activeProduct;
+
+  console.log('activeProduct', activeProduct);
   return (
     <>
       <section class="text-gray-700 body-font overflow-hidden bg-white">
@@ -21,18 +29,18 @@ const ProductDetails = ({
             <div className="flex flex-col lg:w-1/2 w-full">
               <div>
                 <img
-                  class="w-full object-cover object-center rounded border border-gray-200"
+                  class="w-full  object-cover object-center rounded border border-gray-200"
                   src={image}
                   alt={name}
                 />
               </div>
-              <div className="flex flex-row justify-start items-center mt-5">
+              <div className="flex flex-row justify-start items-center mt-5 gap-5">
                 {images.map((item) => {
                   return (
                     <div>
                       <img
                         alt="name"
-                        class="w-32 object-cover object-center rounded border border-gray-200"
+                        class="w-32 h-32 object-cover object-center rounded border border-gray-200"
                         src={item}
                       />
                     </div>

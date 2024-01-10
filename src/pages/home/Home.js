@@ -63,6 +63,8 @@ const Home = () => {
     getAllProducts();
   }, []);
 
+  console.log('allProducts  ', allProducts);
+
   return (
     <>
       <div className="container mx-auto">
@@ -107,7 +109,20 @@ const Home = () => {
 
             <div className="flex flex-row flex-wrap justify-center items-center gap-8">
               {festuredProducts.map(
-                ({ _id, name, image, brand, numReviews, price, review }) => {
+                ({
+                  _id,
+                  name,
+                  image,
+                  brand,
+                  numReviews,
+                  price,
+                  review,
+                  category,
+                  description,
+                  images,
+                  isFeatured,
+                  stock,
+                }) => {
                   return (
                     <ProductCard
                       key={_id}
@@ -117,6 +132,20 @@ const Home = () => {
                       review={review.map((item) => item.rating)}
                       numReviews={numReviews}
                       price={price}
+                      data={{
+                        _id,
+                        name,
+                        image,
+                        brand,
+                        numReviews,
+                        price,
+                        review,
+                        category,
+                        description,
+                        images,
+                        isFeatured,
+                        stock,
+                      }}
                     />
                   );
                 }
@@ -144,7 +173,20 @@ const Home = () => {
 
             <div className="flex flex-row flex-wrap justify-center items-center gap-8">
               {allProducts.map(
-                ({ _id, name, image, brand, numReviews, price, review }) => {
+                ({
+                  _id,
+                  name,
+                  image,
+                  brand,
+                  numReviews,
+                  price,
+                  review,
+                  category,
+                  description,
+                  images,
+                  isFeatured,
+                  stock,
+                }) => {
                   return (
                     <ProductCard
                       key={_id}
@@ -154,6 +196,20 @@ const Home = () => {
                       review={review.map((item) => item.rating)}
                       numReviews={numReviews}
                       price={price}
+                      data={{
+                        _id,
+                        name,
+                        image,
+                        brand,
+                        numReviews,
+                        price,
+                        review,
+                        category,
+                        description,
+                        images,
+                        isFeatured,
+                        stock,
+                      }}
                     />
                   );
                 }

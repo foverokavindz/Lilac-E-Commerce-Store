@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Rating from './Rating';
 import { Link } from 'react-router-dom';
 import Wishicon from './Wishicon';
+import { addActiveProduct } from '../store/reducers/product/productSlice';
+import { useDispatch } from 'react-redux';
 
 const ProductCard = ({
   _id,
@@ -11,8 +13,11 @@ const ProductCard = ({
   review,
   numReviews,
   price,
+  data,
 }) => {
   const [isWishiconClicked, setIsWishiconClick] = useState(false);
+
+  const dispatch = useDispatch();
 
   // const [rating, setRating] = useState(0);
 
@@ -46,7 +51,11 @@ const ProductCard = ({
   return (
     <>
       <div className=" border-gray-200 rounded-lg shadow p-5">
-        <Link to={`/product/${_id}`} className="group">
+        <Link
+          to={`/products-details`}
+          onClick={() => dispatch(addActiveProduct(data))}
+          className="group"
+        >
           <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7 ">
             <img
               src={image}
@@ -94,7 +103,8 @@ const ProductCard = ({
               </svg>
             </Link>
             <Link
-              to={`/product/${_id}`}
+              onClick={() => dispatch(addActiveProduct(data))}
+              to={'/products-details'}
               class="w-full py-3 px-6 text-center text-white rounded-xl transition bg-gray-700  hover:bg-gray-600 active:bg-gray-700 focus:bg-gray-600 sm:w-max"
             >
               Buy now

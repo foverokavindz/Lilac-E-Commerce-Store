@@ -461,6 +461,11 @@ export default function Product() {
                       numReviews,
                       price,
                       review,
+                      category,
+                      description,
+                      images,
+                      isFeatured,
+                      stock,
                     }) => {
                       return (
                         <ProductCard
@@ -471,6 +476,20 @@ export default function Product() {
                           review={review.map((item) => item.rating)}
                           numReviews={numReviews}
                           price={price}
+                          data={{
+                            _id,
+                            name,
+                            image,
+                            brand,
+                            numReviews,
+                            price,
+                            review,
+                            category,
+                            description,
+                            images,
+                            isFeatured,
+                            stock,
+                          }}
                         />
                       );
                     }
