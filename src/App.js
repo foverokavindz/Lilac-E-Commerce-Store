@@ -12,6 +12,7 @@ import Footer from './components/Footer';
 import ProductDetails from './pages/productDetails/ProductDetails';
 import Contact from './pages/contact/Contact';
 import Cart from './components/Cart';
+import Checkout from './pages/checkout/Checkout';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/products" element={<Product />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/checkout" element={<Checkout />} />
 
           {/* testing route */}
           <Route path="/products-details" element={<ProductDetails />} />

@@ -29,9 +29,12 @@ const cartSlice = createSlice({
           totalPrice: newItem.price,
           name: newItem.title,
         });
+
+        state.items.map((item) => (state.subtotal += item.totalPrice));
       } else {
         existingItem.quantity++;
         existingItem.totalPrice = existingItem.totalPrice + newItem.price;
+        state.subtotal += newItem.price;
       }
     },
     removeItemFromCart(state, action) {
@@ -40,15 +43,19 @@ const cartSlice = createSlice({
       state.totalQuantity--;
       state.changed = true;
       if (existingItem.quantity === 1) {
+        // this means if it reduce again product need to be remove
+        // select not equal items and reassign again and remove equal one from array
         state.items = state.items.filter((item) => item.id !== id);
       } else {
         existingItem.quantity--;
         existingItem.totalPrice = existingItem.totalPrice - existingItem.price;
+        state.subtotal -= existingItem.price;
       }
     },
   },
 });
 
-export const cartActions = cartSlice.actions;
+export const { addItemToCart, replaceCart, removeItemFromCart } =
+  cartSlice.actions;
 
-export default cartSlice;
+export default cartSlice.reducer;

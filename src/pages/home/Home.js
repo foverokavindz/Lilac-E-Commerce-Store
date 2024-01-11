@@ -5,6 +5,7 @@ import TwoColumnSection from '../../components/TwoColumnSection';
 import ProductCard from '../../components/ProductCard';
 import Promotion from '../../sections/adverticements/Promotion';
 import Discounts from '../../sections/adverticements/Discounts';
+import { useDispatch } from 'react-redux';
 
 const categoryData = [
   {
@@ -35,6 +36,7 @@ const categoryData = [
 const Home = () => {
   const [allProducts, setAllProducts] = useState([]);
   const [festuredProducts, setFeaturedProducts] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const getFeaturedProducts = async () => {
