@@ -28,6 +28,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const { currentUser } = useSelector((state) => state.user);
   const { cartItemCount } = useSelector((state) => state.ui);
+  const { totalQuantity } = useSelector((state) => state.cart);
 
   const handleSignOut = () => {
     localStorage.removeItem('lilac-auth-token');
@@ -97,9 +98,9 @@ const Navbar = () => {
                       <span className="sr-only">View Cart</span>
 
                       {/* cart batch */}
-                      <div className="t-0 absolute left-5 bottom-5">
-                        <p className="flex h-2 w-2 items-center justify-center rounded-full bg-red-500 p-2.5 text-xs text-white">
-                          {cartItemCount}
+                      <div className="t-0 absolute left-5 bottom-5 ">
+                        <p className=" h-4 w-4 flex items-center justify-center rounded-full bg-red-500 p-2.5  text-xs text-white">
+                          {totalQuantity}
                         </p>
                       </div>
                       <ShoppingCartIcon
