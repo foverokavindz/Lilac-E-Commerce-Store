@@ -4,7 +4,7 @@ import Home from './pages/home/Home';
 import About from './pages/About';
 import SignIn from './pages/auth/SignIn';
 import SignUp from './pages/auth/SignUp';
-import Profile from './pages/Profile';
+import Profile from './pages/profile/Profile';
 import Navbar from './components/Navbar';
 import PrivateRoute from './components/PrivateRoute';
 import Product from './pages/product/Product';
