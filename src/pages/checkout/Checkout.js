@@ -79,8 +79,8 @@ const Checkout = () => {
                 );
               })}
             </div>
-            <div class="flex justify-center  md:flex-row flex-col items-stretch w-full space-y-4 md:space-y-0 md:space-x-6 xl:space-x-8">
-              <div class="flex flex-col px-4 py-6 md:p-6 xl:p-8 w-full bg-gray-50  space-y-6">
+            <div class="flex justify-center  md:flex-row flex-col items-stretch w-full space-y-4 md:space-y-0 md:space-x-6 xl:space-x-8 ">
+              <div class="flex flex-col px-4 py-6 md:p-6 xl:p-8 w-full bg-gray-50  space-y-6 rounded-2xl">
                 <h3 class="text-xl  font-semibold leading-5 text-gray-800">
                   Summary
                 </h3>
@@ -116,24 +116,33 @@ const Checkout = () => {
                   </p>
                 </div>
               </div>
-              <div class="flex flex-col justify-center px-4 py-6 md:p-6 xl:p-8 w-full bg-gray-50  space-y-6">
+              <div class="flex flex-col justify-center px-4 py-6 md:p-6 xl:p-8 w-full rounded-2xl bg-gray-50  space-y-6">
                 <h3 class="text-xl  font-semibold leading-5 text-gray-800">
                   Place A Order - Cash on Delivery
                 </h3>
                 <div class="flex justify-between items-start w-full">
                   <div class="flex justify-center items-center space-x-4">
                     <div class="w-8 h-8">
-                      <img
-                        class="w-full h-full"
-                        alt="logo"
-                        src="https://i.ibb.co/L8KSdNQ/image-3.png"
-                      />
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-8 h-8"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"
+                        />
+                      </svg>
                     </div>
                     <div class="flex flex-col justify-start items-center">
                       <p class="text-lg leading-6  font-semibold text-gray-800">
-                        DPD Delivery
+                        FOVERO Delivery
                         <br />
-                        <span class="font-normal">Delivery with 24 Hours</span>
+                        <span class="text-base">Delivery with 24 Hours</span>
                       </p>
                     </div>
                   </div>
@@ -142,18 +151,18 @@ const Checkout = () => {
                   </p>
                 </div>
                 <div class="w-full flex justify-center items-center">
-                  <button class="hover:bg-black  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 py-5 w-96 md:w-full bg-gray-800 text-base font-medium leading-4 text-white">
+                  <button class="hover:bg-black rounded-xl  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 py-5 w-96 md:w-full bg-gray-800 text-base font-medium leading-4 text-white">
                     Place a Order
                   </button>
                 </div>
               </div>
             </div>
           </div>
-          <div class="bg-gray-50 rounded-3xl w-full xl:w-96 flex justify-between items-center md:items-start px-4 py-6 md:p-6 xl:p-8 flex-col">
+          <div class=" rounded-3xl w-full xl:w-96 flex justify-start items-center md:items-start px-4 py-6 md:p-6 xl:p-8 flex-col">
             <h3 class="text-xl  font-semibold leading-5 text-gray-800">
-              Customer
+              Your Details
             </h3>
-            <div class="flex flex-col md:flex-row xl:flex-col justify-start items-stretch h-full w-full md:space-x-6 lg:space-x-8 xl:space-x-0">
+            <div class="flex flex-col md:flex-row xl:flex-col justify-start  w-full md:space-x-6 lg:space-x-8 xl:space-x-0">
               <div class="flex flex-col justify-start items-start flex-shrink-0">
                 <div class="flex justify-center w-full md:justify-start items-center space-x-4 py-8 border-b border-gray-200">
                   <img
@@ -216,10 +225,10 @@ const Checkout = () => {
                     </p>
                   </div>
                 </div>
-                <div class="flex w-full justify-center items-center md:justify-start md:items-start">
+                <div class="flex w-full justify-center items-center md:justify-start md:items-start mt-10">
                   <button
                     onClick={() => navigate('/profile')}
-                    class="mt-6 md:mt-0  py-5 rounded-xl hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 border border-gray-800 font-medium w-96 2xl:w-full text-base  leading-4 text-gray-800"
+                    class="mt-6 md:mt-0  py-3 rounded-xl hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 border-2 border-gray-800 font-medium w-96 2xl:w-full text-base  leading-4 text-gray-800"
                   >
                     Edit Details
                   </button>

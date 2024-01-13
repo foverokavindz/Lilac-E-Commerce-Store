@@ -264,7 +264,7 @@ const Profile = () => {
           </ul>
 
           {/*  dynamic content */}
-          <div className="p-10 bg-gray-50 text-medium text-gray-500   rounded-2xl w-full  ">
+          <div className="p-10 bg-gray-100 text-medium text-gray-500   rounded-2xl w-full  ">
             {activePage === 1 ? (
               // overview
               <div>
@@ -452,19 +452,21 @@ const Profile = () => {
                                 alt="Profile picture"
                                 width={'100px'}
                               />
-                              {imageError ? (
-                                <span>
-                                  Error uploading image (should be image file
-                                  and less than 2 MB)
-                                </span>
-                              ) : uploadPrecentage > 0 &&
-                                uploadPrecentage < 100 ? (
-                                <span>Uploading ... {uploadPrecentage}%</span>
-                              ) : uploadPrecentage === 100 ? (
-                                <span>Upload Successfully</span>
-                              ) : (
-                                ''
-                              )}
+                              <div>
+                                {imageError ? (
+                                  <p>
+                                    Error uploading image (should be image file
+                                    and less than 2 MB)
+                                  </p>
+                                ) : uploadPrecentage > 0 &&
+                                  uploadPrecentage < 100 ? (
+                                  <p>Uploading ... {uploadPrecentage}%</p>
+                                ) : uploadPrecentage === 100 ? (
+                                  <p>Upload Successfully</p>
+                                ) : (
+                                  ''
+                                )}
+                              </div>
                               <input
                                 type="file"
                                 ref={fileRef}
