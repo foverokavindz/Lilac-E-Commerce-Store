@@ -137,7 +137,7 @@ const Profile = () => {
 
       dispatch(userUpdateSuccess(data));
       //console.log('data  ', data);
-      navigate('/');
+      navigate('/profile');
     } catch (error) {
       console.log('error', error);
       dispatch(userUpdateFailure(error));
@@ -210,12 +210,12 @@ const Profile = () => {
     }
   };
 
-  const handleSignOut = () => {
-    localStorage.removeItem('lilac-auth-token');
-    localStorage.clear();
-    dispatch(userSignOut());
-    navigate('/sign-in');
-  };
+  // const handleSignOut = () => {
+  //   localStorage.removeItem('lilac-auth-token');
+  //   localStorage.clear();
+  //   dispatch(userSignOut());
+  //   navigate('/sign-in');
+  // };
 
   const changeActivePage = (key) => setActivePage(key);
 
@@ -344,15 +344,7 @@ const Profile = () => {
             ) : activePage === 2 ? (
               // Update data
               <div>
-                <div className="px-4 sm:px-0">
-                  <h3 className="text-xl font-semibold leading-7 text-gray-900">
-                    Update Your Information
-                  </h3>
-                  <p className="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
-                    Insert data into feild.
-                  </p>
-                </div>
-                <form onSubmit={handleSubmit}>
+                {/*    <form onSubmit={handleSubmit}>
                   <img
                     src={formData.profilePicture || currentUser.profilePicture}
                     alt="profile picture"
@@ -430,7 +422,7 @@ const Profile = () => {
                   <br />
                   <button onClick={handleSignOut}>Sign out</button>
                   <button onClick={handleDeleteAccount}>Delete Account</button>
-                </div>
+                  </div> */}
 
                 <div>
                   <div className="px-4 sm:px-0">
