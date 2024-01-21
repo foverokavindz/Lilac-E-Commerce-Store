@@ -344,7 +344,8 @@ const Profile = () => {
             ) : activePage === 2 ? (
               // Update data
               <div>
-                {/*    <form onSubmit={handleSubmit}>
+                {/*    
+                <form onSubmit={handleSubmit}>
                   <img
                     src={formData.profilePicture || currentUser.profilePicture}
                     alt="profile picture"
@@ -422,7 +423,9 @@ const Profile = () => {
                   <br />
                   <button onClick={handleSignOut}>Sign out</button>
                   <button onClick={handleDeleteAccount}>Delete Account</button>
-                  </div> */}
+                  </div> 
+                  
+                  */}
 
                 <div>
                   <div className="px-4 sm:px-0">

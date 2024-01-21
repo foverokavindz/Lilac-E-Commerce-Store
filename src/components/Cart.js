@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { toggleCartVisible } from '../store/reducers/ui/uiSlice';
 import {
   addItemToCart,
+  clearCart,
   removeItemFromCart,
   removeOneProduct,
 } from '../store/reducers/cart/cartSlice';
@@ -87,6 +88,17 @@ export default function Example() {
                           Shopping cart
                         </Dialog.Title>
                         <div className="ml-3 flex h-7 items-center">
+                          {totalQuantity !== 0 ? (
+                            <button
+                              className="px-4 py-1 text-red-500 font-medium bg-red-100 rounded-2xl text-base mr-4 hover:bg-red-200"
+                              onClick={() => dispatch(clearCart())}
+                            >
+                              Clear cart
+                            </button>
+                          ) : (
+                            ''
+                          )}
+
                           <button
                             type="button"
                             className="relative -m-2 p-2 text-gray-400 hover:text-gray-500"

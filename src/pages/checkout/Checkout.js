@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  addItemToCart,
-  removeItemFromCart,
-  removeOneProduct,
-} from '../../store/reducers/cart/cartSlice';
+import { clearCart } from '../../store/reducers/cart/cartSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -12,6 +8,58 @@ const Checkout = () => {
   const { items, subtotal, totalQuantity } = useSelector((state) => state.cart);
   const { currentUser } = useSelector((state) => state.user);
   const navigate = useNavigate();
+
+  console.log('items   ', items);
+  console.log('currentUser  ', currentUser);
+
+  const handleSubmit = async () => {
+    const bodyData = {
+      orderItems: [],
+      address: currentUser.address,
+    };
+
+    // Iterate through each object in the originalData array
+    items.forEach((item) => {
+      const newItem = {
+        name: item.name || '',
+        quantity: item.quantity || '',
+        image: item.image || '',
+        color: item.selectedColor || '',
+        size: item.selectedSize || '',
+        price: item.price || '',
+        productId: item._id || '',
+      };
+
+      // Push the newly created item to the orderItems array
+      bodyData.orderItems.push(newItem);
+    });
+
+    console.log('bodyData  ', bodyData);
+
+    try {
+      // setIsLoading(true);
+      const token = localStorage.getItem('lilac-auth-token');
+      const res = await fetch('http://localhost:3005/api/order', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': token,
+        },
+        body: JSON.stringify(bodyData),
+      });
+      const data = await res.json();
+      // if (data.error) setError(true);
+
+      // setIsLoading(false);
+      console.log('data  ', data);
+      navigate('/');
+      dispatch(clearCart());
+    } catch (error) {
+      console.log('error', error);
+      //  setIsLoading(false);
+      //  setError(true);
+    }
+  };
 
   return (
     <div className="container mx-auto max-w-7xl py-16 flex flex-col">
@@ -151,7 +199,10 @@ const Checkout = () => {
                   </p>
                 </div>
                 <div class="w-full flex justify-center items-center">
-                  <button class="hover:bg-black rounded-xl  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 py-5 w-96 md:w-full bg-gray-800 text-base font-medium leading-4 text-white">
+                  <button
+                    onClick={() => handleSubmit()}
+                    class="hover:bg-black rounded-xl  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 py-5 w-96 md:w-full bg-gray-800 text-base font-medium leading-4 text-white"
+                  >
                     Place a Order
                   </button>
                 </div>

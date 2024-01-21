@@ -236,7 +236,19 @@ const ProductDetails = () => {
                     Add to cart
                   </button>
                   <Link
-                    to={'/products-details'}
+                    onClick={() =>
+                      dispatch(
+                        addItemToCart({
+                          _id,
+                          price,
+                          name,
+                          selectedColor,
+                          selectedSize,
+                          image,
+                        })
+                      )
+                    }
+                    to={'/checkout'}
                     class="flex flex-row gap-3 w-full py-3 px-6 text-center text-white rounded-xl transition bg-gray-700  hover:bg-gray-600 active:bg-gray-700 focus:bg-gray-600 sm:w-max"
                   >
                     <svg
