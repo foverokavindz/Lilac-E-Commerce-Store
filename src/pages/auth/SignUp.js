@@ -16,7 +16,7 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Data  ', JSON.stringify(formData));
+    //console.log('Data  ', JSON.stringify(formData));
     try {
       setIsLoading(true);
       const res = await fetch('http://localhost:3005/api/auth/signup', {
