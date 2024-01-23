@@ -1,69 +1,59 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const TwoColumnSection = () => {
+const TwoColumnSection = ({
+  image,
+  direction,
+  heading,
+  subHeading,
+  content,
+  btnLink,
+}) => {
+  const navigate = useNavigate();
+
   return (
     <>
-      <div>
-        <div class="items-center flex flex-wrap">
-          <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
-            <img
-              alt="..."
-              class="max-w-full rounded-lg shadow-lg"
-              src="https://images.unsplash.com/photo-1555212697-194d092e3b8f?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=634&amp;q=80"
-            />
-          </div>
-          <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
-            <div class="md:pr-12">
-              <div class="text-pink-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-pink-300 mt-8">
-                <i class="fas fa-rocket text-xl"></i>
-              </div>
-              <h3 class="text-3xl font-semibold">A growing company</h3>
-              <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
-                The extension comes with three pre-built pages to help you get
-                started faster. You can change the text and images and you're
-                good to go.
-              </p>
-              <ul class="list-none mt-6">
-                <li class="py-2">
-                  <div class="flex items-center">
-                    <div>
-                      <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3">
-                        <i class="fas fa-fingerprint"></i>
-                      </span>
-                    </div>
-                    <div>
-                      <h4 class="text-blueGray-500">
-                        Carefully crafted components
-                      </h4>
-                    </div>
-                  </div>
-                </li>
-                <li class="py-2">
-                  <div class="flex items-center">
-                    <div>
-                      <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3">
-                        <i class="fab fa-html5"></i>
-                      </span>
-                    </div>
-                    <div>
-                      <h4 class="text-blueGray-500">Amazing page examples</h4>
-                    </div>
-                  </div>
-                </li>
-                <li class="py-2">
-                  <div class="flex items-center">
-                    <div>
-                      <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3">
-                        <i class="far fa-paper-plane"></i>
-                      </span>
-                    </div>
-                    <div>
-                      <h4 class="text-blueGray-500">Dynamic components</h4>
-                    </div>
-                  </div>
-                </li>
-              </ul>
+      <div className="flex flex-row flex-wrap h-screen  items-center">
+        <div className="w-1/2 h-screen bg-center overflow-hidden">
+          <img
+            alt="..."
+            className="w-full object-cover g-no-repeat "
+            src={image}
+          />
+        </div>
+        <div className="w-1/2  flex flex-col justify-start items-start px-20 ">
+          <div className="">
+            <div className="text-2xl font-semibold text-gray-600">
+              {subHeading}
             </div>
+            <div className="text-5xl font-bold text-gray-700 mt-2">
+              {heading}
+            </div>
+            <div className="text-lg leading-relaxed text-gray-500 mt-12">
+              {content}
+            </div>
+          </div>
+          <div>
+            <button
+              onClick={() => navigate(btnLink)}
+              className="mt-16 py-4 px-7 drop-shadow-lg bg-gray-800 text-white rounded-2xl text-base font-medium flex flex-row gap-3 items-center border-2 hover:bg-gray-100 hover:text-gray-800 border-gray-800 transition-all"
+            >
+              Read more
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-5 h-5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
+                />
+              </svg>
+            </button>
           </div>
         </div>
       </div>

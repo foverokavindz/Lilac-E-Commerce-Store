@@ -1,4 +1,29 @@
 import React, { useState, useEffect } from 'react';
+import sliderImageOne from '../components/assets/slider/1.jpg';
+import sliderImageTwo from '../components/assets/slider/2.jpg';
+import sliderImageThree from '../components/assets/slider/3.jpg';
+
+const sliderData = [
+  {
+    key: 1,
+    image: sliderImageThree,
+    mainHeading: 'Unleash Your Bold Side: Statement Pieces Galore',
+    subHeading: 'Stand Out in the Crowd with Fashion forward Pieces',
+  },
+
+  {
+    key: 2,
+    image: sliderImageTwo,
+    mainHeading: 'Essentials Collection Timeless Wardrobe Staples',
+    subHeading: 'Versatile Pieces for Effortless Mix and Match',
+  },
+  {
+    key: 3,
+    image: sliderImageOne,
+    mainHeading: 'Trendy Styles for Every Season',
+    subHeading: 'Discover the Latest Fashion Trends',
+  },
+];
 
 const ImageSlider = () => {
   const [slidePosition, setSlidePosition] = useState(0);
@@ -22,35 +47,37 @@ const ImageSlider = () => {
 
     return () => clearInterval(intervalId);
   }, [slidePosition]);
-
+  // console.log('hiii');
   return (
     <>
       <div
-        className="h-screen w-full overflow-hidden flex flex-nowrap text-center"
+        className="h-screen w-full overflow-hidden flex flex-nowrap text-center antialiased"
         id="slider"
       >
-        <div className="bg-blue-600 text-white space-y-4 flex-none w-full flex flex-col items-center justify-center">
-          <h2 className="text-4xl max-w-md">Your Big Idea</h2>
-          <p className="max-w-md">
-            It's fast, flexible, and reliable — with zero-runtime.
-          </p>
-        </div>
-        <div className="bg-pink-400 text-white space-y-4 flex-none w-full flex flex-col items-center justify-center">
-          <h2 className="text-4xl max-w-md">
-            Tailwind CSS works by scanning all of your HTML
-          </h2>
-          <p className="max-w-md">
-            It's fast, flexible, and reliable — with zero-runtime.
-          </p>
-        </div>
-        <div className="bg-teal-500 text-white space-y-4 flex-none w-full flex flex-col items-center justify-center">
-          <h2 className="text-4xl max-w-md">React, Vue, and HTML</h2>
-          <p className="max-w-md">
-            Accessible, interactive examples for React and Vue powered by
-            Headless UI, plus vanilla HTML if you’d rather write any necessary
-            JS yourself.
-          </p>
-        </div>
+        {sliderData.map((image) => {
+          return (
+            <div
+              className=" relative text-white  flex-none w-full flex flex-col items-center justify-center"
+              key={image.key}
+            >
+              <img
+                src={image.image}
+                alt="slider Image"
+                className="object-fill w-full h-screen "
+              />
+
+              <div className="absolute w-full h-screen flex justify-center items-center flex-col bg-gray-900 bg-opacity-50 gap-10">
+                {' '}
+                <h2 className="text-7xl px-20 font-semibold uppercase text-balance">
+                  {image.mainHeading}
+                </h2>
+                <p className="max-w-md text-lg font-medium uppercase">
+                  {image.subHeading}
+                </p>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </>
   );

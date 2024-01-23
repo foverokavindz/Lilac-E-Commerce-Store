@@ -3,12 +3,12 @@ import React from 'react';
 const ImageCard = ({ image, name, description }) => {
   return (
     <>
-      <div className="w-80">
-        <div className="w-80 overflow-hidden rounded-xl ">
+      <div className="w-80 ">
+        <div className="w-72 overflow-hidden rounded-3xl ">
           {' '}
           <img
             src={image}
-            class="h-80 w-80 object-cover object-center group-hover:opacity-75 rounded-xl hover:scale-110 transition-all"
+            class="h-72 w-72 object-cover object-center group-hover:opacity-75 rounded-xl hover:scale-110 transition-all"
             alt={name}
           />
         </div>

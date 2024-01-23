@@ -36,10 +36,10 @@ const Discounts = () => {
                 </button>
               </div>
             </div>
-            <div class="grid grid-cols-5 grid-rows-4 gap-4 md:w-5/12 lg:w-6/12">
+            <div class="grid grid-cols-5 grid-rows-4 gap-10 md:w-5/12 lg:w-6/12">
               <div class="col-span-2 row-span-4">
                 <img
-                  src="https://tailus.io/sources/blocks/ecommerce-site/preview/images/products/kushagra.webp"
+                  src="https://images.unsplash.com/photo-1603252109303-2751441dd157?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                   class="rounded-full"
                   width="640"
                   height="960"
@@ -49,7 +49,7 @@ const Discounts = () => {
               </div>
               <div class="col-span-2 row-span-2">
                 <img
-                  src="https://tailus.io/sources/blocks/ecommerce-site/preview/images/products/iman.webp"
+                  src="https://images.unsplash.com/photo-1523381294911-8d3cead13475?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                   class="w-full h-full object-cover object-top rounded-xl"
                   width="640"
                   height="640"
@@ -59,7 +59,7 @@ const Discounts = () => {
               </div>
               <div class="col-span-3 row-span-3">
                 <img
-                  src="https://tailus.io/sources/blocks/ecommerce-site/preview/images/products/daniel.webp"
+                  src="https://images.unsplash.com/photo-1564584217132-2271feaeb3c5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                   class="w-full h-full object-cover object-top rounded-xl"
                   width="640"
                   height="427"
