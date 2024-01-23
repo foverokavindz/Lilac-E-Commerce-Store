@@ -19,7 +19,7 @@ import {
   userSignOut,
 } from '../../store/reducers/user/userSlice';
 import { Link, useNavigate } from 'react-router-dom';
-import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid';
+import MyOrders from '../../sections/userProfile/MyOrders';
 
 const navbarData = [
   {
@@ -618,16 +618,8 @@ const Profile = () => {
               </div>
             ) : activePage === 3 ? (
               // Orders
-              <div>
-                {' '}
-                <div className="px-4 sm:px-0">
-                  <h3 className="text-xl font-semibold leading-7 text-gray-900">
-                    Order list
-                  </h3>
-                  <p className="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
-                    Click on orders to add reviews.
-                  </p>
-                </div>
+              <div className="px-4 ">
+                <MyOrders />
               </div>
             ) : (
               ''

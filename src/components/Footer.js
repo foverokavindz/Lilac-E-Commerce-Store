@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from './assets/Lilac-mini-logo-transparent-white.png';
 
 const Footer = () => {
   return (
@@ -41,40 +42,38 @@ const Footer = () => {
                   href="#"
                   class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500"
                 >
-                  Who We Are
+                  About
                 </a>
                 <a
                   href="#"
                   class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500"
                 >
-                  Our Philosophy
+                  Contact
                 </a>
               </div>
             </div>
 
             <div>
-              <p class="font-semibold text-gray-800 dark:text-white">
-                Industries
-              </p>
+              <p class="font-semibold text-gray-800 dark:text-white">Help</p>
 
               <div class="flex flex-col items-start mt-5 space-y-2">
                 <a
                   href="#"
                   class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500"
                 >
-                  Retail & E-Commerce
+                  Retail
                 </a>
                 <a
                   href="#"
                   class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500"
                 >
-                  Information Technology
+                  Support
                 </a>
                 <a
                   href="#"
                   class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500"
                 >
-                  Finance & Insurance
+                  Terms & Conditions
                 </a>
               </div>
             </div>
@@ -84,11 +83,7 @@ const Footer = () => {
 
           <div class="flex items-center justify-between">
             <a href="#">
-              <img
-                class="w-auto h-7"
-                src="https://merakiui.com/images/full-logo.svg"
-                alt=""
-              />
+              <img class="w-20 h-auto" src={logo} alt="" />
             </a>
 
             <div class="flex -mx-2">
