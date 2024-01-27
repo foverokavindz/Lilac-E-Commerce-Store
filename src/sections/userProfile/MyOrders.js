@@ -57,125 +57,134 @@ const MyOrders = () => {
           Click on orders to add reviews.
         </p>
       </div>
-      <div>
-        {myOrders.map(
-          (
-            {
-              _id,
-              total,
-              address,
-              paymentMethod,
-              status,
-              orderItems,
-              dateOrdered,
-            },
-            index
-          ) => {
-            return (
-              <div key={_id} className="border-t mt-8 border-gray-400">
-                <h3 className="py-4 text-lg  font-semibold  text-gray-700 ">
-                  {index + 1}) - Ordered {formatTimestamp(dateOrdered)}
-                </h3>
 
-                <table class="w-full text-sm text-center rtl:text-right text-gray-500 ">
-                  <thead class="text-xs text-gray-700 uppercase bg-gray-300 ">
-                    <tr>
-                      <th scope="col" class="px-6 py-3">
-                        Order Id
-                      </th>
-                      <th scope="col" class="px-6 py-3">
-                        Address
-                      </th>
-                      <th scope="col" class="px-6 py-3">
-                        Order Status
-                      </th>
-                      <th scope="col" class="px-6 py-3">
-                        Payment Method
-                      </th>
-                      <th scope="col" class="px-6 py-3">
-                        Total
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr class="bg-gray-200 border-b ">
-                      <th
-                        scope="row"
-                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
-                      >
-                        {_id}
-                      </th>
-                      <td class="px-6 py-4">$ {address}</td>
-                      <td class="px-6 py-4">{status}</td>
-                      <td class="px-6 py-4">{paymentMethod}</td>
-                      <td class="px-6 py-4">{total}</td>
-                    </tr>
-                  </tbody>
-                </table>
+      {myOrders === '' ? (
+        <div>
+          {myOrders.map(
+            (
+              {
+                _id,
+                total,
+                address,
+                paymentMethod,
+                status,
+                orderItems,
+                dateOrdered,
+              },
+              index
+            ) => {
+              return (
+                <div key={_id} className="border-t mt-8 border-gray-400">
+                  <h3 className="py-4 text-lg  font-semibold  text-gray-700 ">
+                    {index + 1}) - Ordered {formatTimestamp(dateOrdered)}
+                  </h3>
 
-                <div className="flex flex-col justify-start items-start rounded-3xl bg-gray-100 px-4 py-4 md:py-6 md:p-6 xl:p-8 w-full">
-                  {orderItems.map((product) => {
-                    return (
-                      <div className="mt-4 md:mt-6 flex flex-col md:flex-row justify-start items-start md:items-center md:space-x-6 xl:space-x-8 w-full">
-                        {/* product Item */}
-                        <div className="pb-4 md:pb-8 w-full md:w-40">
-                          <img
-                            className="w-32 h-32 rounded-2xl"
-                            src={product.image}
-                            alt="dress"
-                          />
-                        </div>
+                  <table class="w-full text-sm text-center rtl:text-right text-gray-500 ">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-300 ">
+                      <tr>
+                        <th scope="col" class="px-6 py-3">
+                          Order Id
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                          Address
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                          Order Status
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                          Payment Method
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                          Total
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="bg-gray-200 border-b ">
+                        <th
+                          scope="row"
+                          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
+                        >
+                          {_id}
+                        </th>
+                        <td class="px-6 py-4">$ {address}</td>
+                        <td class="px-6 py-4">{status}</td>
+                        <td class="px-6 py-4">{paymentMethod}</td>
+                        <td class="px-6 py-4">{total}</td>
+                      </tr>
+                    </tbody>
+                  </table>
 
-                        <div className="border-b border-gray-100 md:flex-row flex-col flex justify-between items-start w-full pb-8 space-y-4 md:space-y-0">
-                          <div className="w-full flex flex-col justify-start items-start">
-                            <h6>ID : {product._id}</h6>
-                            <h3 className="text-xl  xl:text-2xl font-semibold leading-6 text-gray-700">
-                              {product.name}
-                            </h3>
+                  <div className="flex flex-col justify-start items-start rounded-3xl bg-gray-100 px-4 py-4 md:py-6 md:p-6 xl:p-8 w-full">
+                    {orderItems.map((product) => {
+                      return (
+                        <div className="mt-4 md:mt-6 flex flex-col md:flex-row justify-start items-start md:items-center md:space-x-6 xl:space-x-8 w-full">
+                          {/* product Item */}
+                          <div className="pb-4 md:pb-8 w-full md:w-40">
+                            <img
+                              className="w-32 h-32 rounded-2xl"
+                              src={product.image}
+                              alt="dress"
+                            />
+                          </div>
 
-                            <div className="flex justify-start items-start flex-col space-y-2 mt-7">
-                              <p className="text-sm  leading-none text-gray-700">
-                                <span className=" text-gray-500">Size: </span>{' '}
-                                {product.size}
+                          <div className="border-b border-gray-100 md:flex-row flex-col flex justify-between items-start w-full pb-8 space-y-4 md:space-y-0">
+                            <div className="w-full flex flex-col justify-start items-start">
+                              <h6>ID : {product._id}</h6>
+                              <h3 className="text-xl  xl:text-2xl font-semibold leading-6 text-gray-700">
+                                {product.name}
+                              </h3>
+
+                              <div className="flex justify-start items-start flex-col space-y-2 mt-7">
+                                <p className="text-sm  leading-none text-gray-700">
+                                  <span className=" text-gray-500">Size: </span>{' '}
+                                  {product.size}
+                                </p>
+                                <p className="text-sm  leading-none text-gray-700">
+                                  <span className=" text-gray-500">
+                                    Color:{' '}
+                                  </span>
+                                  {product.color}
+                                </p>
+                              </div>
+                            </div>
+                            <div className="flex justify-between space-x-8 items-start w-full">
+                              <p className="text-base  xl:text-lg leading-6">
+                                Price: ${product.price}{' '}
                               </p>
-                              <p className="text-sm  leading-none text-gray-700">
-                                <span className=" text-gray-500">Color: </span>
-                                {product.color}
+                              <p className="text-base  xl:text-lg leading-6 text-gray-800">
+                                Qty: {product.quantity}
+                              </p>
+                              <p className="text-base  xl:text-lg font-semibold leading-6 text-gray-800">
+                                Tot: ${product.total}{' '}
                               </p>
                             </div>
                           </div>
-                          <div className="flex justify-between space-x-8 items-start w-full">
-                            <p className="text-base  xl:text-lg leading-6">
-                              Price: ${product.price}{' '}
-                            </p>
-                            <p className="text-base  xl:text-lg leading-6 text-gray-800">
-                              Qty: {product.quantity}
-                            </p>
-                            <p className="text-base  xl:text-lg font-semibold leading-6 text-gray-800">
-                              Tot: ${product.total}{' '}
-                            </p>
-                          </div>
                         </div>
-                      </div>
-                    );
-                  })}
+                      );
+                    })}
 
-                  <div className="w-full flex flex-row justify-end gap-5 items-center text-2xl font-semibold text-gray-600 underline">
-                    <div>
-                      {' '}
-                      <p>Total </p>
-                    </div>
-                    <div>
-                      {' '}
-                      <p>{total} </p>
+                    <div className="w-full flex flex-row justify-end gap-5 items-center text-2xl font-semibold text-gray-600 underline">
+                      <div>
+                        {' '}
+                        <p>Total </p>
+                      </div>
+                      <div>
+                        {' '}
+                        <p>{total} </p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            );
-          }
-        )}
-      </div>
+              );
+            }
+          )}
+        </div>
+      ) : (
+        <h3 className="text-2xl font-bold leading-7 text-gray-900 text-center mt-5">
+          You haven't places any orders yet!
+        </h3>
+      )}
     </div>
   );
 };

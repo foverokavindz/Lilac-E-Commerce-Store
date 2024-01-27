@@ -181,16 +181,13 @@ const Profile = () => {
     //console.log('token', token);
     try {
       dispatch(userDeleteStart());
-      const res = await fetch(
-        `http://localhost:3005/api/user/delete/${currentUser._id}`,
-        {
-          method: 'DELETE',
-          headers: {
-            'Content-Type': 'application/json',
-            'x-auth-token': token,
-          },
-        }
-      );
+      const res = await fetch(`http://localhost:3005/api/user/delete`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': token,
+        },
+      });
 
       //const data = await res.json();
 
