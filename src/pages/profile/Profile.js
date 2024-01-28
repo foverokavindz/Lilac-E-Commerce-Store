@@ -20,6 +20,7 @@ import {
 } from '../../store/reducers/user/userSlice';
 import { Link, useNavigate } from 'react-router-dom';
 import MyOrders from '../../sections/userProfile/MyOrders';
+import { ToastContainer, toast } from 'react-toastify';
 
 const navbarData = [
   {
@@ -454,15 +455,23 @@ const Profile = () => {
                               />
                               <div>
                                 {imageError ? (
-                                  <p>
-                                    Error uploading image (should be image file
-                                    and less than 2 MB)
-                                  </p>
+                                  () => {
+                                    toast.error(
+                                      'Error uploading image (should be image file and less than 2 MB',
+                                      {
+                                        position: 'top-right',
+                                      }
+                                    );
+                                  }
                                 ) : uploadPrecentage > 0 &&
                                   uploadPrecentage < 100 ? (
                                   <p>Uploading ... {uploadPrecentage}%</p>
                                 ) : uploadPrecentage === 100 ? (
-                                  <p>Upload Successfully</p>
+                                  () => {
+                                    toast.success('Image uploaded sucessful', {
+                                      position: 'top-right',
+                                    });
+                                  }
                                 ) : (
                                   ''
                                 )}
@@ -624,6 +633,7 @@ const Profile = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

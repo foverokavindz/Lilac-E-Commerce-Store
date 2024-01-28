@@ -24,11 +24,13 @@ const SignUp = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
+      //
       const data = await res.json();
       if (data.error) setError(true);
 
       setIsLoading(false);
       console.log('data  ', data);
+
       navigate('/sign-in');
     } catch (error) {
       console.log('error', error);

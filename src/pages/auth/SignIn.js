@@ -9,6 +9,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import OAuth from '../../components/OAuth';
 import logo from '../../components/assets/Lilac-logo-transparent.png';
+import { ToastContainer, toast } from 'react-toastify';
 
 const SignIn = () => {
   const [formData, setFormData] = useState({});
@@ -56,7 +57,10 @@ const SignIn = () => {
       navigate('/');
     } catch (error) {
       console.log('error', error);
-
+      toast.error("Username and Password isn't match", {
+        position: 'top-right',
+        theme: 'colored',
+      });
       dispatch(signInFailure(error));
     }
   };
@@ -186,11 +190,10 @@ const SignIn = () => {
               </p>
             </div>
             <OAuth />
-
-            {error ? <p>Something went Wrong!</p> : ''}
           </div>
         </div>
       </div>
+      <ToastContainer />
     </>
   );
 };
