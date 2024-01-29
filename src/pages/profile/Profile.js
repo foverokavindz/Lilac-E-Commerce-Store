@@ -138,7 +138,8 @@ const Profile = () => {
 
       dispatch(userUpdateSuccess(data));
       //console.log('data  ', data);
-      navigate('/profile');
+      toast.success('Updated Successfully');
+      setActivePage(1);
     } catch (error) {
       console.log('error', error);
       dispatch(userUpdateFailure(error));
@@ -201,7 +202,10 @@ const Profile = () => {
       localStorage.removeItem('lilac-auth-token');
       localStorage.clear();
 
-      navigate('/sign-in');
+      toast.warn('Account Deleted');
+      setTimeout(() => {
+        navigate('/sign-in');
+      }, 2000);
     } catch (error) {
       console.log('error', error);
       dispatch(userDeleteFailure(error));
@@ -456,18 +460,13 @@ const Profile = () => {
                               <div>
                                 {imageError ? (
                                   toast.error(
-                                    'Error uploading image (should be image file and less than 2 MB',
-                                    {
-                                      position: 'top-right',
-                                    }
+                                    'Error uploading image (should be image file and less than 2 MB'
                                   )
                                 ) : uploadPrecentage > 0 &&
                                   uploadPrecentage < 100 ? (
                                   <p>Uploading ... {uploadPrecentage}%</p>
                                 ) : uploadPrecentage === 100 ? (
-                                  toast.success('Image uploaded sucessful', {
-                                    position: 'top-right',
-                                  })
+                                  toast.success('Image uploaded sucessful')
                                 ) : (
                                   ''
                                 )}
@@ -629,7 +628,7 @@ const Profile = () => {
           </div>
         </div>
       </div>
-      <ToastContainer />
+      <ToastContainer position="top-right" theme="colored" />
     </div>
   );
 };

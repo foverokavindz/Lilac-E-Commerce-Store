@@ -17,6 +17,7 @@ const MyOrders = () => {
         });
         const data = await res.json();
         // if (data.error) setError(true);
+        console.log('data order   ', data);
         setMyOrders(data);
         // setIsLoading(false);
         console.log('data  ', data);
@@ -29,6 +30,8 @@ const MyOrders = () => {
 
     getMyOrders();
   }, []);
+
+  console.log('myOrders', myOrders);
 
   const formatTimestamp = (timestamp) => {
     const date = new Date(timestamp);
@@ -58,7 +61,7 @@ const MyOrders = () => {
         </p>
       </div>
 
-      {myOrders === '' ? (
+      {myOrders !== '' ? (
         <div>
           {myOrders.map(
             (
