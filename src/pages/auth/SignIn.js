@@ -53,8 +53,13 @@ const SignIn = () => {
       //setError(true);
 
       dispatch(signInSuccess(data));
-
-      navigate('/');
+      toast.success('Login Successfull', {
+        position: 'top-right',
+        theme: 'colored',
+      });
+      setTimeout(() => {
+        navigate('/');
+      }, 2000);
     } catch (error) {
       console.log('error', error);
       toast.error("Username and Password isn't match", {

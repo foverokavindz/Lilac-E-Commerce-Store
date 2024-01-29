@@ -13,6 +13,7 @@ import ProductDetails from './pages/productDetails/ProductDetails';
 import Contact from './pages/contact/Contact';
 import Cart from './components/Cart';
 import Checkout from './pages/checkout/Checkout';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
         </Routes>
         <Footer />
       </BrowserRouter>
+      <ToastContainer />
     </>
   );
 }

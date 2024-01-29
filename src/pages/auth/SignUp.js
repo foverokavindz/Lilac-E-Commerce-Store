@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import OAuth from '../../components/OAuth';
+import { ToastContainer, toast } from 'react-toastify';
 
 const SignUp = () => {
   const [formData, setFormData] = useState({});
@@ -31,7 +32,14 @@ const SignUp = () => {
       setIsLoading(false);
       console.log('data  ', data);
 
-      navigate('/sign-in');
+      toast.success('Data Added successfully !', {
+        position: 'top-right',
+        theme: 'colored',
+      });
+
+      setTimeout(() => {
+        navigate('/sign-in');
+      }, 2000);
     } catch (error) {
       console.log('error', error);
       setIsLoading(false);
@@ -231,6 +239,7 @@ const SignUp = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </>
   );
 };

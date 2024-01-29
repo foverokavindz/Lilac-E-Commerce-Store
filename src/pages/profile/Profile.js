@@ -455,23 +455,19 @@ const Profile = () => {
                               />
                               <div>
                                 {imageError ? (
-                                  () => {
-                                    toast.error(
-                                      'Error uploading image (should be image file and less than 2 MB',
-                                      {
-                                        position: 'top-right',
-                                      }
-                                    );
-                                  }
+                                  toast.error(
+                                    'Error uploading image (should be image file and less than 2 MB',
+                                    {
+                                      position: 'top-right',
+                                    }
+                                  )
                                 ) : uploadPrecentage > 0 &&
                                   uploadPrecentage < 100 ? (
                                   <p>Uploading ... {uploadPrecentage}%</p>
                                 ) : uploadPrecentage === 100 ? (
-                                  () => {
-                                    toast.success('Image uploaded sucessful', {
-                                      position: 'top-right',
-                                    });
-                                  }
+                                  toast.success('Image uploaded sucessful', {
+                                    position: 'top-right',
+                                  })
                                 ) : (
                                   ''
                                 )}

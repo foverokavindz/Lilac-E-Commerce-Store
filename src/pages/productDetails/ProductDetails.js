@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addItemToCart } from '../../store/reducers/cart/cartSlice';
+import { ToastContainer, toast } from 'react-toastify';
 
 const ProductDetails = () => {
   const [selectedColor, setSelectedColor] = useState('');
@@ -205,7 +206,7 @@ const ProductDetails = () => {
 
                 <div className="flex flex-row justify-between gap-2 items-center">
                   <button
-                    onClick={() =>
+                    onClick={() => {
                       dispatch(
                         addItemToCart({
                           _id,
@@ -215,8 +216,9 @@ const ProductDetails = () => {
                           selectedSize,
                           image,
                         })
-                      )
-                    }
+                      );
+                      toast.success('Item Added to cart');
+                    }}
                     class="flex flex-row gap-3 w-full py-3 px-6 text-center text-gray-700  transition rounded-xl  bg-gray-100  hover:bg-gray-200 active:bg-gray-300 focus:bg-gray-200 sm:w-max"
                   >
                     <svg
@@ -273,6 +275,7 @@ const ProductDetails = () => {
           </div>
         </div>
       </section>
+      <ToastContainer position="top-right" theme="colored" autoClose="1000" />
     </>
   );
 };
