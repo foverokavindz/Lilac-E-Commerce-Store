@@ -466,7 +466,7 @@ const Profile = () => {
                                   uploadPrecentage < 100 ? (
                                   <p>Uploading ... {uploadPrecentage}%</p>
                                 ) : uploadPrecentage === 100 ? (
-                                  toast.success('Image uploaded sucessful')
+                                  <p>Uploading Successfull</p>
                                 ) : (
                                   ''
                                 )}
