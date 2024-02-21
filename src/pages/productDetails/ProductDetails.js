@@ -50,7 +50,7 @@ const ProductDetails = () => {
     }
   }, [selectedColor, selectedSize, stock]);
 
-  console.log('activeProduct   ', activeProduct);
+  //console.log('activeProduct   ', activeProduct);
   return (
     <>
       <section className="text-gray-700 body-font overflow-hidden bg-white">
