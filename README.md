@@ -1,3 +1,10 @@
+## Lilac store Admin Dashboard - https://github.com/foverokavindz/lilac-admin-dashboard
+
+## Lilac store Backend - https://github.com/foverokavindz/Lilac-e-com-store-api
+
+![Project Image](https://github.com/foverokavindz/Lilac-E-Commerce-Store/blob/master/public/projectImage.png?raw=true)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
