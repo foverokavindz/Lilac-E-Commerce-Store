@@ -38,7 +38,7 @@ const ImageSlider = () => {
         slider.scrollTo({ left: 0, behavior: 'smooth' });
         setSlidePosition(0);
       } else {
-        slider.scrollBy({ left: slider.clientWidth, behavior: 'smooth' });
+        slider.scrollTo({ left: nextPosition, behavior: 'smooth' });
         setSlidePosition(nextPosition);
       }
     };
