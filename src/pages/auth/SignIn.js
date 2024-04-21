@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import OAuth from '../../components/OAuth';
 import logo from '../../components/assets/Lilac-logo-transparent.png';
 import { ToastContainer, toast } from 'react-toastify';
+const BASE_URL = process.env.REACT_APP_API_URL;
 
 const SignIn = () => {
   const [formData, setFormData] = useState({});
@@ -29,7 +30,7 @@ const SignIn = () => {
     try {
       //setIsLoading(true);
       dispatch(signInStart());
-      const res = await fetch('http://localhost:3005/api/auth/signin', {
+      const res = await fetch(BASE_URL + '/auth/signin', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

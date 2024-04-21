@@ -7,6 +7,8 @@ import Promotion from '../../sections/adverticements/Promotion';
 import Discounts from '../../sections/adverticements/Discounts';
 import { useDispatch } from 'react-redux';
 
+const BASE_URL = process.env.REACT_APP_API_URL;
+
 const categoryData = [
   {
     id: 1,
@@ -41,9 +43,7 @@ const Home = () => {
   useEffect(() => {
     const getFeaturedProducts = async () => {
       try {
-        const response = await fetch(
-          'http://localhost:3005/api/product/featured'
-        );
+        const response = await fetch(BASE_URL + '/product/featured');
         const data = await response.json();
         setFeaturedProducts(data);
       } catch (error) {
@@ -53,7 +53,7 @@ const Home = () => {
 
     const getAllProducts = async () => {
       try {
-        const response = await fetch('http://localhost:3005/api/product');
+        const response = await fetch(BASE_URL + '/product');
         const data = await response.json();
         setAllProducts(data);
       } catch (error) {

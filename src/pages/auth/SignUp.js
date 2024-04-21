@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import OAuth from '../../components/OAuth';
 import { ToastContainer, toast } from 'react-toastify';
+const BASE_URL = process.env.REACT_APP_API_URL;
 
 const SignUp = () => {
   const [formData, setFormData] = useState({});
@@ -20,7 +21,7 @@ const SignUp = () => {
     //console.log('Data  ', JSON.stringify(formData));
     try {
       setIsLoading(true);
-      const res = await fetch('http://localhost:3005/api/auth/signup', {
+      const res = await fetch(BASE_URL + '/auth/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),

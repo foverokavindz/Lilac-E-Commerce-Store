@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 
+const BASE_URL = process.env.REACT_APP_API_URL;
+
 const Checkout = () => {
   const dispatch = useDispatch();
   const { items, subtotal, totalQuantity } = useSelector((state) => state.cart);
@@ -40,7 +42,7 @@ const Checkout = () => {
     try {
       // setIsLoading(true);
       const token = localStorage.getItem('lilac-auth-token');
-      const res = await fetch('http://localhost:3005/api/order', {
+      const res = await fetch(BASE_URL + '/order', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

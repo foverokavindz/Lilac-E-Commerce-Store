@@ -11,6 +11,9 @@ import {
 } from '@heroicons/react/20/solid';
 import ProductCard from '../../components/ProductCard';
 
+const BASE_URL = process.env.REACT_APP_API_URL;
+console.log('BASE_URL  ', BASE_URL);
+
 const sortOptions = [
   { name: 'Most Popular', href: '#', current: true },
   { name: 'Best Rating', href: '#', current: false },
@@ -62,7 +65,7 @@ const filters = [
     ],
   },
 ];
-
+/*
 const products = [
   {
     id: 1,
@@ -146,7 +149,7 @@ const products = [
       'Hand holding black machined steel mechanical pencil with brass tip and top.',
   },
   // More products...
-];
+];*/
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -160,7 +163,7 @@ export default function Product() {
   useEffect(() => {
     const getAllProducts = async () => {
       try {
-        const response = await fetch('http://localhost:3005/api/product');
+        const response = await fetch(BASE_URL + '/product');
         const data = await response.json();
         setAllProducts(data);
       } catch (error) {

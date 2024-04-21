@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+const BASE_URL = process.env.REACT_APP_API_URL;
 
 const MyOrders = () => {
   const [myOrders, setMyOrders] = useState([]);
@@ -8,7 +9,7 @@ const MyOrders = () => {
       try {
         // setIsLoading(true);
         const token = localStorage.getItem('lilac-auth-token');
-        const res = await fetch('http://localhost:3005/api/order/myorders', {
+        const res = await fetch(BASE_URL + '/order/myorders', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

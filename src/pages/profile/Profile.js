@@ -21,6 +21,7 @@ import {
 import { Link, useNavigate } from 'react-router-dom';
 import MyOrders from '../../sections/userProfile/MyOrders';
 import { ToastContainer, toast } from 'react-toastify';
+const BASE_URL = process.env.REACT_APP_API_URL;
 
 const navbarData = [
   {
@@ -120,7 +121,7 @@ const Profile = () => {
     console.log('token', token);
     try {
       dispatch(userUpdateStart());
-      const res = await fetch(`http://localhost:3005/api/user/update`, {
+      const res = await fetch(BASE_URL + `/user/update`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -183,7 +184,7 @@ const Profile = () => {
     //console.log('token', token);
     try {
       dispatch(userDeleteStart());
-      const res = await fetch(`http://localhost:3005/api/user/delete`, {
+      const res = await fetch(BASE_URL + `/user/delete`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

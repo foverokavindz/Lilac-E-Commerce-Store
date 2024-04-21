@@ -152,7 +152,7 @@ export default function Example() {
 
                                       <div className="flex">
                                         <div
-                                          class="inline-flex rounded-xl "
+                                          className="inline-flex rounded-xl "
                                           role="group"
                                         >
                                           {/* add item */}
@@ -163,7 +163,7 @@ export default function Example() {
                                               )
                                             }
                                             type="button"
-                                            class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 "
+                                            className="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 "
                                           >
                                             <svg
                                               xmlns="http://www.w3.org/2000/svg"
@@ -171,7 +171,7 @@ export default function Example() {
                                               viewBox="0 0 24 24"
                                               stroke-width="1.5"
                                               stroke="currentColor"
-                                              class="w-5 h-5"
+                                              className="w-5 h-5"
                                             >
                                               <path
                                                 stroke-linecap="round"
@@ -188,7 +188,7 @@ export default function Example() {
                                               )
                                             }
                                             type="button"
-                                            class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 "
+                                            className="px-4 py-2 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 "
                                           >
                                             <svg
                                               xmlns="http://www.w3.org/2000/svg"
@@ -196,7 +196,7 @@ export default function Example() {
                                               viewBox="0 0 24 24"
                                               stroke-width="1.5"
                                               stroke="currentColor"
-                                              class="w-5 h-5"
+                                              className="w-5 h-5"
                                             >
                                               <path
                                                 stroke-linecap="round"
@@ -213,7 +213,7 @@ export default function Example() {
                                               )
                                             }
                                             type="button"
-                                            class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 "
+                                            className="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 "
                                           >
                                             <svg
                                               xmlns="http://www.w3.org/2000/svg"
@@ -221,7 +221,7 @@ export default function Example() {
                                               viewBox="0 0 24 24"
                                               stroke-width="1.5"
                                               stroke="tomato"
-                                              class="w-5 h-5"
+                                              className="w-5 h-5"
                                             >
                                               <path
                                                 stroke-linecap="round"
@@ -267,7 +267,7 @@ export default function Example() {
                           <Link
                             onClick={() => dispatch(toggleCartVisible())}
                             to={'/checkout'}
-                            class="flex items-center justify-center rounded-md border border-transparent bg-gray-700 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-gray-600"
+                            className="flex items-center justify-center rounded-md border border-transparent bg-gray-700 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-gray-600"
                           >
                             Checkout
                           </Link>
@@ -299,7 +299,7 @@ export default function Example() {
                               viewBox="0 0 24 24"
                               stroke-width="1.5"
                               stroke="currentColor"
-                              class="w-4 h-4"
+                              className="w-4 h-4"
                             >
                               <path
                                 stroke-linecap="round"
@@ -337,7 +337,7 @@ export default function Example() {
                           <Link
                             onClick={() => dispatch(toggleCartVisible())}
                             to={'/products-details'}
-                            class="flex items-center mt-5 gap-5 justify-center rounded-md border border-transparent bg-gray-700 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-gray-600"
+                            className="flex items-center mt-5 gap-5 justify-center rounded-md border border-transparent bg-gray-700 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-gray-600"
                           >
                             Continue Shopping
                             <svg
@@ -346,7 +346,7 @@ export default function Example() {
                               viewBox="0 0 24 24"
                               stroke-width="1.5"
                               stroke="currentColor"
-                              class="w-5 h-5"
+                              className="w-5 h-5"
                             >
                               <path
                                 stroke-linecap="round"
