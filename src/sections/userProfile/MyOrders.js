@@ -111,7 +111,7 @@ const MyOrders = () => {
                         >
                           {_id}
                         </th>
-                        <td class="px-6 py-4">$ {address}</td>
+                        <td class="px-6 py-4">{address}</td>
                         <td class="px-6 py-4">{status}</td>
                         <td class="px-6 py-4">{paymentMethod}</td>
                         <td class="px-6 py-4">{total}</td>
