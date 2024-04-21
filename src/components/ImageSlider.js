@@ -31,7 +31,7 @@ const ImageSlider = () => {
   useEffect(() => {
     const slider = document.getElementById('slider');
     const moveSlide = () => {
-      const max = slider.scrollWidth - slider.clientWidth;
+      const max = slider.scrollWidth;
       const nextPosition = slidePosition + slider.clientWidth;
 
       if (nextPosition >= max) {
